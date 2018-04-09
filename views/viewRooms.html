@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section id="selectResults">
+    {% if selectCity&&count %}
+    <div class="cityInfo">
+        搜索城市为：{{selectCity}}&nbsp;入住日期：{{}}共有{{count}}条结果
+    </div>
+    <div class="option">
+        <span>筛选条件：</span>
+        <span><a href="/roomsview?option=views">浏览次数</a></span>
+        <span><a href="/roomsview?option=comments">评论</a></span>
+        <span><a href="/roomsview?option=stars">星级</a></span>
+    </div>
+    <div class="flex-container">
+        {% for room in selectrooms %}
+        <div class="flex-item">
+            <div class="item">
+            <a href="/viewroom?roomid={{room.id}}"><img alt="" src='{{room.image}}'  /></a>
+            <p><label for="">￥{{room.price}}</label> {{room.place}}-{{room.name}}</p>
+					<span class="commentBox">
+						<span class="commentStar">
+                            <!--<img src="/public/images/star_gray.png" alt="" />-->
+                            推荐星级：{{room.stars}}星级
+                        </span>
+                        <span class="views">&nbsp;&nbsp;&nbsp;浏览次数：{{room.views}}</span>
+                        <a>评论:{{room.comments.length}}</a>
+					</span>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}

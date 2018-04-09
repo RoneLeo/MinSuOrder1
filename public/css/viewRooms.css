@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+}
+.cityInfo {
+    font-size: 28px;
+    padding: 10px 50px;
+}
+.option {
+    diasplay:block;
+}
+.option span{
+    display: inline-block;
+}
+.option span a {
+    text-decoration: none;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /*height: 200px;*/
+    margin-top: 0px;
+    /*list-style: none;*/
+    padding: 0 40px;
+}
+.flex-item{
+    flex-grow: 0;
+    flex-basis: 20px;
+    /*text-align: center;*/
+    padding: 15px;
+    /*margin-left:4%;*/
+    /*float:left;*/
+}
+.item {
+    width: 390px;
+    height: 330px;
+}
+/*.flex-item:nth-child(1){*/
+    /*margin-left: 0;*/
+/*}*/
+/*.flex-item:nth-child(4){*/
+    /*margin-right: 0;*/
+/*}*/
+.item img{
+    width: 100%;
+    height: 270px;
+}
+.item label{
+    color:#DD3F50;
+    font-weight: 600;
+}
+.item .commentBox{
+    display:inline-block;
+    width: 100%;
+    height: 18px;
+    font-size: 14px;
+    line-height: 20px;
+    /*background: url(../images/star_gray_back.png) no-repeat;*/
+    /*background-size:100% auto;*/
+    /*vertical-align: middle;*/
+}
+.item .commentBox .views, .item .commentBox .commentStar, .item a{
+    display:inline-block;
+}
+/*.item .commentStar{*/
+    /*display: inline-block;*/
+    /*!*width: 80px;*!*/
+    /*!*height: 18px;*!*/
+    /*!*overflow: hidden;*!*/
+/*}*/
+/*.item .commentStar>img{*/
+    /*width: 100px!important;*/
+    /*height: 18px;*/
+/*}*/
+.item a{
+    text-decoration: none;
+}
+
+
+

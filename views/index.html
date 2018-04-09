@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section id="goWhere">
+    <div>暑假您打算去哪里呢？</div>
+    <ul id="goWhereNav">
+        <li class="liNav where_selectedStyle">成都</li>
+        <li class="liNav">北京</li>
+        <li class="liNav">昆明</li>
+        <li class="liNav">杭州</li>
+        <li class="liNav">西安</li>
+    </ul>
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-no-swiping"><img src="/public/images/whereBanner1.jpg" alt="" /></div>
+            <div class="swiper-slide swiper-no-swiping"><img src="/public/images/whereBanner2.jpg" alt="" /></div>
+            <div class="swiper-slide swiper-no-swiping"><img src="/public/images/whereBanner3.jpg" alt="" /></div>
+        </div>
+        <div class="swiper-pagination2"></div>
+    </div>
+    <ul id="whereListBox">
+        {% for room in recommendRooms %}
+        <li>
+            <a href="/viewroom?roomid={{room.id}}"><img src='{{room.image}}' alt="" /></a>
+            <p><label for="">￥{{room.price}}</label> {{room.place}}-{{room.name}}</p>
+					<span class="commentBox">
+						<span class="commentStar">
+                            <!--<img src="/public/images/star_gray.png" alt="" />-->
+                            推荐星级：{{room.stars}}
+                        </span>
+                        <span class="views">&nbsp;&nbsp;浏览：{{room.views}}</span>
+                        <a>;&nbsp;评论:29</a>
+					</span>
+        </li>
+        {% endfor %}
+
+        <!--<li>-->
+            <!--<img src="/public/images/rooms/whereRoom2.jpg" alt="" />-->
+            <!--<p><label for="">￥299</label> 阿坝-藏式木屋双人床</p>-->
+					<!--<span class="commentBox">-->
+						<!--<span class="commentStar"><img src="/public/images/star_gray.png" alt="" /></span>-->
+					<!--</span>-->
+            <!--<a>6条评论</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<img src="/public/images/rooms/whereRoom3.jpg" alt="" />-->
+            <!--<p><label for="">￥699</label> 北京-都市时尚酒店</p>-->
+					<!--<span class="commentBox">-->
+						<!--<span class="commentStar"><img src="/public/images/star_gray.png" alt="" /></span>-->
+					<!--</span>-->
+            <!--<a>19条评论</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<img src="/public/images/rooms/whereRoom4.jpg" alt="" />-->
+            <!--<p><label for="">￥299</label> 南京-古都私人酒楼</p>-->
+					<!--<span class="commentBox">-->
+						<!--<span class="commentStar"><img src="/public/images/star_gray.png" alt="" /></span>-->
+					<!--</span>-->
+            <!--<a>20条评论</a>-->
+        <!--</li>-->
+    </ul>
+</section>
+
+<section id="myHome">
+    <div id="home_title">别住酒店，住我家</div>
+    <div class="dvPoint">
+        <div id="dvPoint_recommend">精品房源推荐</div>
+        <div id="dvPoint_More">了解更多</div>
+    </div>
+    <section id="recommendListBox">
+        <div class="recommendLi1">
+            <img src="/public/images/rooms/recommend1.jpg" alt="" />
+
+        </div>
+        <div class="recommendLi2">
+            <img src="/public/images/rooms/recommend2.jpg" alt="" />
+        </div>
+        <div class="recommendLi3">
+            <img src="/public/images/rooms/recommend3.jpg" alt="" />
+        </div>
+        <div class="recommendLi4">
+            <img src="/public/images/rooms/recommend4.jpg" alt="" />
+        </div>
+    </section>
+
+    <div class="dvPoint2">
+        <div id="dvPoint_recommend">美食制作体验</div>
+        <div id="dvPoint_More">了解更多</div>
+    </div>
+
+    <section id="foodMakingBox">
+        <ul>
+            <li>
+                <img src="/public/images/foodMaking/foodMaking1.jpg" alt="" />
+                <p><label>￥</label></p>
+            </li>
+            <li>
+                <img src="/public/images/foodMaking/foodMaking2.jpg" alt="" />
+            </li>
+            <li>
+                <img src="/public/images/foodMaking/foodMaking3.jpg" alt="" />
+            </li>
+            <li>
+                <img src="/public/images/foodMaking/foodMaking4.jpg" alt="" />
+            </li>
+        </ul>
+    </section>
+</section>
+
+{% endblock %}

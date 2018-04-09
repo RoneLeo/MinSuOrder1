@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/public/css/swiper-3.4.1.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/public/css/index.css" />
+    <link rel="stylesheet" href="/public/css/viewRooms.css" />
+    <link rel="stylesheet" href="/public/css/cityselect.css" />
+    <link rel="stylesheet" href="/public/css/laydate.css" />
+</head>
+<body>
+<header>
+    <div class="swiper-container ">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-no-swiping"><img src="public/images/banner1.jpg" alt="" /></div>
+            <div class="swiper-slide swiper-no-swiping"><img src="public/images/banner2.jpg" alt="" /></div>
+            <div class="swiper-slide swiper-no-swiping"><img src="public/images/banner3.jpg" alt="" /></div>
+        </div>
+        <div class="swiper-button-prev swiper-button-black"></div>
+        <div class="swiper-button-next swiper-button-black"></div>
+
+        <!--LOGO和登录注册之类的-->
+        <div class="logoinBox">
+            <div id="logoBox"><img src="public/images/logo.png" alt="" /></div>
+            <div id="logRegBox">
+                {% if userCookies.userid %}
+                <div class="loginName">
+                    <img src='{{userCookies.headimg}}' alt="头像" /><span id="username">{{userCookies.username}}</span>
+                </div>
+                {% else %}
+                <div class="loginBtn">
+                    <a href="/login.do">登录&nbsp;</a><span>/</span><a href="/register.do">&nbsp;注册</a>
+                </div>
+                {% endif %}
+                <div id="realseBtn"><a >发布新房源</a></div>
+            </div>
+        </div>
+
+        <!--搜索-->
+        <div class="searchBox">
+            <div class="searchDetail search-adr">
+                <img src="public/images/adress.png" alt="" />
+                <input type="text" class="cityinput" id="citySelect" placeholder="请输入目的地">
+            </div>
+
+            <div class="searchDetail search-startTime">
+                <img src="/public/images/date.png" alt="" class="pngData"/>
+                <input type="text" class="indate" onclick="laydate()" placeholder="入住时间"/>
+            </div>
+            <div class="searchDetail search-endTime">
+                <img src="/public/images/date.png" alt="" class="pngData"/>
+                <input type="text" class="outdate" onclick="laydate()" placeholder="退房时间"/>
+            </div>
+            <div class="searchDetail">
+                <img src="/public/images/person.png" alt=""/>
+                <input type="text"  placeholder="请选择人数" id="selPeopleInpt"/>
+                <select id="selPeople">
+                    <option value="1">1人</option>
+                    <option value="2">2人</option>
+                    <option value="3-5">3-5人</option>
+                    <option value="5-8">5-8人</option>
+                    <option value="8-10">8-10人</option>
+                    <option value="11">10人以上</option>
+                </select>
+            </div>
+            <button class="searchBtn"><span href="#"></span>搜索</button>
+        </div>
+    </div>
+</header>
+
+<div class="center">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+<section id="aboutMine">
+    <div class="text-t">
+        <h1>让分享和信赖悄然发生</h1>
+        <span> 完善的安全机制和信用机制，帮助每一位房东和房客</span>
+    </div>
+</section>
+<footer id="footer" style="color: #dd3f50">
+    <!-- <div class="copyright">
+        <span></span>
+    </div> -->
+    <div class="foot_btm" >
+        许可证号：京ICP证140510号 &nbsp;&nbsp; &nbsp;&nbsp; 润心教育科技有限公司
+				<span style="display:none">  &nbsp;&nbsp; 地址：成都市百叶路一号   &nbsp;&nbsp;电话：010-62961978
+				</span>
+    </div>
+    <div style="width:300px;margin:0 auto;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020380" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+            <img src="/public/images/record_icon.png" style="float:left;"/>
+            <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color: #bdc3c7; ">京公网安备 11010802020380号
+            </p>
+        </a>
+    </div>
+
+</footer>
+
+
+
+<script src="/public/js/jquery-1.11.3.js"></script>
+<script src="/public/js/swiper-3.4.1.jquery.min.js"></script>
+<script src="/public/js/cityselect.js"></script>
+<script src="/public/js/laydate.js"></script>
+<script src="/public/js/js.cookies.js"></script>
+<script type="text/javascript">
+    var mySwiper = new Swiper ('.swiper-container', {//轮播
+        direction: 'horizontal',
+        loop: true,
+        autoplay : 5000,
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        noSwiping:true,
+        swipeHandler : '.swipe-handler',
+    })
+
+    var mySwiper2 = new Swiper('.swiper-container2',{
+        pagination : '.swiper-pagination2',
+        paginationClickable :true,
+        noSwiping:true,
+        swipeHandler : '.swipe-handler',
+    })
+
+
+    var test=new Vcity.CitySelector({input:'citySelect'});//选择城市
+
+    var peoplenum;
+
+//    if(Cookies.get('userid')) {
+//        $('#logRegBox').find(".loginName").show();
+//        $('#logRegBox').find(".loginBtn").hide();
+//        console.log(Cookies.get('headimg'));
+//        console.log(typeof Cookies.get('headimg'));
+//        console.log(Cookies.get('username'));
+//        console.log(typeof Cookies.get('username'));
+//        $('#logRegBox').find("img").attr("src",Cookies.get('headimg'));
+//        $('#logRegBox').find("#username").text(Cookies.get('username'));
+//        console.log("cookies获取成功");
+//    }else {
+//        $('#logRegBox').find(".loginName").hide();
+//        $('#logRegBox').find(".loginBtn").show();
+//        $('#logRegBox').find(".loginName").innerHTML = "cookies get error";
+//    }
+
+    $("#selPeople").on('change',function(){
+//				alert("22");
+        $("#selPeopleInpt").css('display','none');
+        $("#selPeople").css({'opacity':'1','filter':'alpha(opacity=100)'});
+        peoplenum = $(this).val();
+    });
+
+    $(".searchBtn").on("click", function () {
+        var cityinput = $(".cityinput").val();
+        var indate = $(".indate").val();
+        var outdate = $(".outdate").val();
+        console.log("city:" + cityinput + "; indate:" + indate + "; outdate:" + outdate +"; num:" + peoplenum);
+
+        $.ajax({
+            type:"post",
+            url:"/",
+            async:true,
+            dataType:"json",
+            data:{
+                city:cityinput,
+                indate:indate,
+                outdate:outdate,
+                peoplenum:peoplenum
+            },
+            success:function(data){
+                //回调函数
+                console.log(data);
+                if(!data.code){
+//                    Cookies.set('selectCity', data.selectCity, {  path: '/' });
+                    Cookies.set('indate', data.indate, {  path: '/' });
+                    Cookies.set('outdate', data.outdate, {  path: '/' });
+                    Cookies.set('peoplenum', data.peoplenum, {  path: '/' });
+                    location.href="/roomsview";
+                }else{
+                    alert(data.message);
+                }
+
+//						console.log(data);
+//						alert(data.userInfo.username);
+            }
+        });
+    })
+</script>
+</body>
+</html>
+

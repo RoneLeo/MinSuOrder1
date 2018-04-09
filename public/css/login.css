@@ -1,0 +1,167 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+body{
+	/*background:url(../images/bak.jpg) no-repeat;
+	background-size:cover;
+	background-origin: content-box;*/
+	background-image:url(../images/bak.jpg) ;background-attachment:fixed;background-repeat:no-repeat;background-size:cover;-moz-background-size:cover;-webkit-background-size:cover;
+}
+#loginBox{
+	width: 400px;
+	height: 400px;
+	background: white;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.loginContent{
+	/*display: none;*/
+}
+.regContent{
+	display: none;
+}
+#login{
+	width: 280px;
+	height: 340px;
+	/*border: 1px solid #000;*/
+	margin: 35px auto;
+}
+.navLogin,.navReg{
+	float: left;
+	height: 35px;
+	width: 50%;
+	font-size: 20px;
+	text-align: center;
+	line-height: 35px;
+	cursor: pointer;
+}
+.navLogin{
+	border-bottom: 3px solid #dd6572;
+}
+.clear{
+	clear: both;
+}
+.loginCut{
+	width: 100%;
+	height: 305px;
+}
+.incomBox{
+	height:60px;
+	width: 280px;
+	overflow: hidden;
+}
+.logoinTab{
+	height: 35px;
+	border-bottom: 1px solid #bfbfbf;
+	float: left;
+}
+.incomBox:nth-child(1){
+	margin-top: 20px;
+}
+.userimages,.userIpt{
+	float: left;
+}
+.userimages{
+	height: 25px;
+	width: 25px;
+	background:url(../images/userimages.jpg) no-repeat;
+	margin-top: 4px;
+}
+.pwdimages{
+	background:url(../images/pwdimages.jpg) no-repeat;
+}
+.codeimages{
+	background:url(../images/codeimages.jpg) no-repeat;
+}
+.userIpt input{
+	height: 28px;
+	width: 240px;
+	margin-left: 10px;
+	font-size: 16px;
+	outline: none;
+	border: none;
+}
+.userIptCode input{
+	width: 150px;
+	float: left;
+}
+#codeBox{
+	float: left;
+	height: 30px;
+	width: 90px;
+	border: 1px solid #a5a5a5;
+	text-align: center;
+	line-height: 28px;
+	color:#ccc;
+}
+
+
+
+.logoin_tool{
+	height: 35px;
+	-moz-user-select:none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+}
+.automaticLogoin{
+	color: #bfbfbf;
+	float: left;
+}
+.automaticLogoin>input,.automaticLogoin>label{
+	cursor: pointer;
+}
+.forget{
+	color: #bfbfbf;
+	float: right;
+	cursor: pointer;
+}
+.forget:hover{
+	color:#dd6572;
+}
+.btn_logoin,.btn_register{
+	height: 45px;
+	width: 100%;
+	border: none;
+	background: #DD6572;
+	text-align: center;
+	line-height: 45px;
+	color:white;
+	font-size: 18px;
+	letter-spacing: 8px;
+	cursor: pointer;
+}
+.btn_logoin:hover,.btn_register:hover{
+	background: #db3e4f;;
+}
+#skipReg{
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+	-moz-user-select:none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+}
+#skipReg a{
+	color:#dd6572;
+}
+.btn_register{
+	margin-top: 20px;
+}
+.pointText{
+	display: block;
+	width:100px;
+	margin-top: 40px;
+	margin-left:20px;
+	font-size: 12px;
+	color:red;
+	text-indent: 5px;
+	text-indent: 5px;
+	
+	display: none;
+}

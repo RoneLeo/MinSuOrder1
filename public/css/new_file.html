@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#btn{
+				width: 160px;
+	height: 100%;
+	float: left;
+	border: 1px solid #DD6572;
+	background: white;
+	overflow: hidden;
+	
+	position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<select id="btn">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+		</div>
+		
+		
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script>
+			$("#btn").on('change',function(){
+				alert("111");
+			});
+		</script>
+	</body>
+</html>

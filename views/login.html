@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible"content="IE=edge"/>
+		<title></title>
+		<link rel="stylesheet" href="/public/css/login.css" />
+	</head>
+	<body>
+		<div id="loginBox">
+			<div id="login">
+				<div class="navLogin">登录</div>
+				<div class="navReg">注册</div>
+				<div class="clear"></div>
+				<div class="loginCut">
+					<div class="loginContent">
+						<form>
+							<div class="incomBox">
+								<div class="logoinTab">
+									<div class="userImg"></div>
+									<div class="userIpt">
+										<input type="text" id="loginName" placeholder="账号/手机号/邮箱"/>
+									</div>
+								</div>
+								<label class="pointText">用户名已存在！</label>
+							</div>
+							
+							<div class="incomBox">
+								<div class="logoinTab">
+									<div class="userImg pwdImg"></div>
+									<div class="userIpt">
+										<input type="text" id="loginPwd" placeholder="密码"/>
+									</div>
+								</div>
+								<label class="pointText">密码不正确！</label>
+							</div>
+							
+							<!--<div class="incomBox">-->
+								<!--<div class="logoinTab">-->
+									<!--<div class="userImg codeImg"></div>-->
+									<!--<div class="userIpt userIptCode">-->
+										<!--<input type="text" id="userCode" placeholder="验证码"/>-->
+										<!--<div id="codeBox">验证码</div>-->
+									<!--</div>-->
+								<!--</div>-->
+								<!--<label class="pointText">验证码不正确！</label>-->
+							<!--</div>-->
+							<div class="logoin_tool">
+								<div class="automaticLogoin">
+									<input type="checkbox" id="auLogoin"/><label for="auLogoin">自动登录</label>
+								</div>
+								<div class="forget">忘记密码?</div>
+							</div>
+							<input type="button" class="btn_logoin" value="登录">
+							<p id="skipReg">还没账号？<a href="#" id="skip_Reg">去注册&gt;&gt;</a></p>
+						</form>
+					</div>
+					
+					<div class="regContent" ng-controller="register">
+						<form>
+							<div class="incomBox">
+								<div class="logoinTab">
+									<div class="userImg"></div>
+									<div class="userIpt">
+										<input type="text" id="regName" placeholder="昵称/手机号/邮箱"/>
+									</div>
+								</div>
+								<!--<label class="pointText regPointText" id="pwd1">用户名已存在！</label>-->
+							</div>
+							
+							<div class="incomBox">
+								<div class="logoinTab">
+								<div class="userImg pwdImg"></div>
+								<div class="userIpt">
+									<input type="text" id="regPwd" placeholder="密码"/>
+								</div>
+							</div>
+								<!--<label class="pointText regPointText" id="pwd2">密码错误！</label>-->
+							</div>
+							
+							
+							<div class="incomBox">
+								<div class="logoinTab">
+									<div class="userImg pwdImg"></div>
+									<div class="userIpt">
+										<input type="text" id="regPwd2" placeholder="确认密码"/>
+									</div>
+								</div>
+								<!--<label class="pointText regPointText" id="pwd3">确认密码错误！</label>-->
+							</div>
+							
+							<input type="button" class="btn_register" value="注册"/>
+							<p id="skipReg">还没账号？<a href="#" id="skip_login">去登录&gt;&gt;</a></p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<script src="/public/js/jquery-1.11.3.js"></script>
+		<script src="/public/js/angular.js"></script>
+		<script src="/public/js/login.js"></script>
+		<script src="/public/js/js.cookies.js"></script>
+		<script type="text/javascript">
+			
+			$(".btn_logoin").on("click",function(){
+				var userName=$("#loginName").val();
+				var userPwd=$("#loginPwd").val();
+				var userCode=$("#userCode").val();
+				$("#skipReg").innerHTML = "已有账号？";
+				$.ajax({//登录
+					type:"post",
+					url:"/login.do",
+					async:true,
+					dataType:"json",
+					data:{
+						name:userName,
+						pwd:userPwd,
+						code:userCode
+					},
+					success:function(data){
+						//回调函数
+						Cookies.set('userid', data.userInfo._id, {  path: '/' });
+						Cookies.set('username', data.userInfo.username, {  path: '/' });
+						Cookies.set('headimg', data.userInfo.headimg, {  path: '/' });
+                        Cookies.set('isAdmin', data.userInfo.isAdmin, {  path: '/' });
+                        location.href="/";
+		                console.log(data);
+//						alert(data.userInfo.username);
+					}
+				});
+		});
+		
+		$(".btn_register").on("click",function(){
+//			var name=$("#pwd1").text();
+//			var pwd=$("#pwd2").text();
+//			var pwd2=$("#pwd3").text();
+//			console.log(name,pwd,pwd2);
+//			if(name==""&&pwd==""&&pwd2==""){ //如果所有输入内容无错误，就执行ajax请求即注册
+//				alert("111");
+				var regName=$("#regName").val();
+				var regPwd=$("#regPwd").val();
+				var regPwd2=$("#regPwd2").val();
+				$.ajax({//注册
+					type:"post",
+					url:"/register.do",
+					async:true,
+					dataType:"json",
+					data:{
+						regName:regName,
+						pwd: regPwd,
+						pwd2:regPwd2
+					},
+					success:function(data){
+						//回调函数
+						alert(data.message);
+						$(".loginContent").css("display","block");
+						$(".regContent").css("display","none");
+						$(".navReg").css("border-bottom","none");
+						$(".navLogin").css("border-bottom","3px solid #dd6572");
+
+					}
+				});
+//			}
+		});
+			/*var app=angular.module("myapp",[]);
+	        app.controller("register",['$scope','$http',function($scope,$http){
+	            $scope.regUserName="";
+	            $scope.regUserPwd="";
+	            $scope.reg=function(){//注册
+	                $http({
+	                    url:'/register.do',
+	                    method:'POST',
+	                    data:JSON.stringify({name:$scope.regUserName,pwd:$scope.regUserPwd}),
+	                }).success(function(data){
+	                    //回调函数
+	                    console.log(data);
+	                    if(data=="注册成功"){
+	                        alert("成功！！！");
+	                    }
+	                });
+	            }
+	            
+	            $scope.loginUserName="";
+	            $scope.loginUserPwd="";
+	            $scope.loginUserCode="";
+	            $scope.login=function(){//登录
+	            	$http({
+	                    url:'/login.do',
+	                    method:'POST',
+	                    data:JSON.stringify({name:$scope.loginUserName,
+	                    					pwd:$scope.regUserPwd,
+	                    					code:$scope.loginUserCode}),
+	                }).success(function(data){
+	                    //回调函数
+	                    console.log(data);
+	                    if(data=="登录成功"){
+	                        alert("成功！！！");
+	                    }
+	                });
+	            }
+	            $scope.tan=function(){
+	            	alert("弹出框");
+	            }
+	            tan();
+	        }]);*/
+	       
+	       
+		</script>
+	</body>
+</html>

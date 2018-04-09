@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="/public/css/singlehome.css" />
+	<script src="/public/js/jquery-1.11.3.js"></script>
+	<script src="/public/js/swiper-3.4.1.jquery.min.js"></script>
+	<script src="/public/js/js.cookies.js"></script>
+</head>
+<body>
+	<span > <button id="return"> 返回</button> </span>
+
+	<div id="page">
+
+		<div id="home-info">
+			<h1 class="introduction"> {{viewingRoom.introduction}}</h1>
+			<div class="home-address">
+				<span class="city">{{viewingRoom.city}}></span>
+				<span class="place">{{viewingRoom.place}}></span>
+				<span class="home-name">{{viewingRoom.name}}</span>
+				<span class="star-level">&nbsp;&nbsp;推荐指数：{{viewingRoom.stars}}星</span>
+			</div>
+			<div class="home-in">
+				<span class="">浏览：{{viewingRoom.views}}</span>
+			</div>
+			<div class="home-order">
+				<div class="order-style">
+					<span>特色房型</span>
+					<span>1套</span>
+					<span class="price" style="color:#dd3f50">￥{{viewingRoom.price}}RMB/晚</span>
+				</div>
+				<div class="order-date">
+					<p><span>入住日期 &nbsp; <i>2018-4-01</i></span></p>
+					<p><span>离开日期 &nbsp; <i>2018-4-02</i></span></p>
+				</div>
+				<p class="roomId" style="display: none"> {{viewingRoom._id.toString()}} </p>
+				<button class="orderbnt">立即预订 ￥{{viewingRoom.price}}</button>
+			</div>
+		</div>
+		<div id="home-img">
+			<img src='{{viewingRoom.image}}' alt="" />
+		</div>
+		<div id="writeComments">
+			<p>写评论</p>
+			<p class="writeArea">
+				<textarea id="messageTextarea"></textarea>
+				<!--<p id="roomId"> {{viewingRoom._id}} </p>-->
+				<input type="hidden" id="roomId" value='{{viewingRoom._id.toString()}}'>
+				<button id="messageBtn" class="submit">提交</button>
+			</p>
+		</div>
+		<div id="commentsList">
+		<p>评论列表 </p>
+			<!--{% for comment in viewingRoom.comments%}-->
+		<!--<div class="commentsItem">-->
+			<!--<div class="message-info">-->
+				<!--<span class="username">{{comment.username}}</span>-->
+				<!--<i>{{formatDate(comment.postTime)}}</i>-->
+			<!--</div>-->
+			<!--<div class="message-item">-->
+				<!--<p>{{comment.content}}做早餐给我们吃。这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。-->
+				<!--</p>-->
+				<!--<div class="imgs">-->
+					<!--<img src="/public/images/comments/comment1.png" alt=""></p>-->
+					<!--<img src="/public/images/comments/comment2.png" alt=""></p>-->
+					<!--<img src="/public/images/comments/comment3.png" alt=""></p>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+			<!--{% endfor %}-->
+		<!--<div class="commentsItem">-->
+			<!--<div class="message-info">-->
+				<!--<span class="username">老王</span>-->
+				<!--<i>2018-4-04 12:20:30</i>-->
+			<!--</div>-->
+			<!--<div class="message-item">-->
+				<!--<p>这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。这家民宿真的很不错的，老板人很好。还做早餐给我们吃。这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。-->
+				<!--</p>-->
+				<!--<div class="imgs">-->
+					<!--<img src="/public/images/comments/comment1.png" alt=""></p>-->
+					<!--<img src="/public/images/comments/comment2.png" alt=""></p>-->
+					<!--<img src="/public/images/comments/comment3.png" alt=""></p>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="commentsItem">-->
+			<!--<div class="message-info">-->
+				<!--<span class="username">老王</span>-->
+				<!--<i>2018-4-04 12:20:30</i>-->
+			<!--</div>-->
+			<!--<div class="message-item">-->
+				<!--<p>这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。这家民宿真的很不错的，老板人很好。还哎难受做早餐给我们吃。-->
+				<!--</p>-->
+				<!--<div class="imgs">-->
+					<!--<img src="/public/images/comments/comment1.png" alt=""></p>-->
+					<!--<img src="/public/images/comments/comment2.png" alt=""></p>-->
+					<!--<img src="/public/images/comments/comment3.png" alt=""></p>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+	</div>
+	</div>
+	<footer id="footer" style="color: #dd3f50">
+			<div class="foot_btm" >
+				许可证号：京ICP证140510号 &nbsp;&nbsp; &nbsp;&nbsp; 润心教育科技有限公司
+				<span style="display:none">  &nbsp;&nbsp; 地址：成都市百叶路一号   &nbsp;&nbsp;电话：010-62961978
+				</span>
+			</div>
+			<div style="width:300px;margin:0 auto;">
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020380" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+					<img src="/public/images/record_icon.png" style="float:left;"/>
+					<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color: #bdc3c7; ">京公网安备 11010802020380号
+					</p>
+				</a>
+			</div>
+
+		</footer>
+	<script src="public/js/comment.js"></script>
+	<script src="/public/js/singleHome.js"></script>
+	<script type="text/javascript">
+		document.getElementById("return").addEventListener("click", function () {
+			location.href = '/roomsview';
+		})
+	</script>
+</body>
+</html>
